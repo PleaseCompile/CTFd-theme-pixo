@@ -1,3 +1,37 @@
+```bash
+rm -rf pixo
+git clone https://github.com/PleaseCompile/CTFd-theme-pixo.git pixo
+chown -R ctfd:www-data pixo
+chmod -R 755 pixo
+```
+
+**คำอธิบายสั้นๆ**
+
+* `rm -rf pixo` → ลบโฟลเดอร์เดิมออก (ถ้ามี)
+* `git clone ... pixo` → clone แล้วตั้งชื่อโฟลเดอร์เป็น `pixo`
+* `chown -R ctfd:www-data` → ตั้ง owner/group ให้เหมือน theme อื่น
+* `chmod -R 755` → ให้สิทธิ์อ่าน-รัน / เขียนเฉพาะ owner
+
+💡 หลังจากนั้น restart CTFd:
+
+```bash
+sudo systemctl restart ctfd
+```
+
+หรือถ้าใช้ `gunicorn` manual:
+
+```bash
+sudo systemctl restart ctfd.service
+```
+
+ถ้าต้องการ version ultra-short แบบยิงทีเดียว:
+
+```bash
+rm -rf pixo && git clone https://github.com/PleaseCompile/CTFd-theme-pixo.git pixo && chown -R ctfd:www-data pixo && chmod -R 755 pixo && systemctl restart ctfd
+```
+
+
+
 # Pixo Theme
 Pixo is a Retro Styled Theme for CTFd which consists of numerous features like OLD CRT like flicker, Old school fonts and notification sound which gives the theme a 90s look.
 
