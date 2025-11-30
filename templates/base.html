@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-	<title>{{ Configs.ctf_name }}</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="{{ Configs.ctf_small_icon }}" type="image/x-icon">
-	<link rel="stylesheet" href="{{ url_for('views.themes', path='css/fonts.css') }}">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{{ url_for('views.themes', path='css/main.css') }}">
-	<link rel="stylesheet" href="{{ url_for('views.themes', path='css/core.css') }}">
-	{% block stylesheets %}
-	{% endblock %}
+        <title>{{ Configs.ctf_name }}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ Configs.ctf_small_icon }}" type="image/x-icon">
+        <!-- Google Fonts - Thai language support -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('views.themes', path='css/fonts.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('views.themes', path='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('views.themes', path='css/core.css') }}">
+        <!-- Thai font override to keep diacritics aligned -->
+        <style>
+                html, body, div, span, p, a, li, ul, ol,
+                h1, h2, h3, h4, h5, h6,
+                table, thead, tbody, tr, th, td,
+                form, input, textarea, select, button, label,
+                .container, .row, .col, [class*="col-"],
+                .card, .card-body, .card-title, .card-text,
+                .modal, .modal-body, .modal-title,
+                .navbar, .nav-link, .dropdown-menu, .dropdown-item,
+                .btn, .badge, .alert, .jumbotron,
+                .table, .form-control, .custom-select {
+                        font-family: "Noto Sans Thai", "Sarabun", -apple-system, BlinkMacSystemFont, sans-serif !important;
+                }
+                .navbar-brand {
+                        font-family: "Press Start 2P", cursive !important;
+                }
+        </style>
+        {% block stylesheets %}
+        {% endblock %}
 
-	{{ Plugins.styles }}
-	<script type="text/javascript">
-		var init = {
-			'urlRoot': "{{ request.script_root }}",
-			'csrfNonce': "{{ Session.nonce }}",
-			'userMode': "{{ Configs.user_mode }}",
-			'userId': {{ Session.id }},
-			'start': {{ Configs.start | tojson }},
-			'end': {{ Configs.end | tojson }},
-			'theme_settings': {{ Configs.theme_settings | tojson }}
-		}
-	</script>
-	{{ Configs.theme_header }}
+        {{ Plugins.styles }}
+        <script type="text/javascript">
+                var init = {
+                        'urlRoot': "{{ request.script_root }}",
+                        'csrfNonce': "{{ Session.nonce }}",
+                        'userMode': "{{ Configs.user_mode }}",
+                        'userId': {{ Session.id }},
+                        'start': {{ Configs.start | tojson }},
+                        'end': {{ Configs.end | tojson }},
+                        'theme_settings': {{ Configs.theme_settings | tojson }}
+                }
+        </script>
+        {{ Configs.theme_header }}
 </head>
 <body>
 	<div class="scanline"></div>
